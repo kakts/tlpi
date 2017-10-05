@@ -23,6 +23,7 @@ static void terminate(Boolean useExit3)
 
 static void outputError(Boolean useErr, int err, Boolean flushStdout, const char *format, va_list ap)
 {
+  #define BUF_SIZE 500
   char buf[BUF_SIZE], userMsg[BUF_SIZE], errText[BUF_SIZE];
 
   vsnprintf(userMsg, BUF_SIZE, format, ap);
@@ -84,7 +85,7 @@ void errExitEN(int errnum, const char *format, ...)
 {
   va_list argList;
 
-  va_start(argLIst, format);
+  va_start(argList, format);
   outputError(TRUE, errnum, TRUE, format, argList);
   va_end(argList);
 
