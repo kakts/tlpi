@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     }
   }
 
-  snprintf(shellCmd, CMD_SIZE, "df -k 'dirname %s'", argv[1]);
+  snprintf(shellCmd, CMD_SIZE, "df -k %s", argv[1]);
   system(shellCmd); // ファイルシステム内での消費量を表示
 
   if (close(fd) == -1) {
