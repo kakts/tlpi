@@ -5,4 +5,4 @@ build:
 
 .PHONY: run
 run: build
-	docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined tlpi
+	docker run -it --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --name tlpi tlpi
