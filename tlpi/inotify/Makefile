@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = demo_inotify
+GEN_EXE = demo_inotify inotify_logger inotify_logger_directory
 
 EXE = ${GEN_EXE} ${LINUX_EXE}
 

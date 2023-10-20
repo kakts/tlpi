@@ -74,6 +74,12 @@ int main(int argc, char *argv[])
         printf("Watching %s using wd %d\n", argv[j], wd);
     }
 
+    // イベントを一度だけ監視するファイルを設定
+    wd = inotify_add_watch(inotifyFd, "oneshot.txt", IN_ONESHOT);
+    if (wd == -1) {
+        errExit("inotify_add_watch");
+    }
+
     // イベント処理用の無限ループ
     for (;;) {
         numRead = read(inotifyFd, buf,BUF_LEN);
