@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "tlpi_hdr.h": "c",
-        "stat.h": "c"
+        "stat.h": "c",
+        "signal_functions.h": "c",
+        "string.h": "c",
+        "signal.h": "c",
+        "error_functions.h": "c"
     }
 }

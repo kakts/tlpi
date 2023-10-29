@@ -22,6 +22,7 @@ gnFail(const char *fname, const char *msg, const char *arg, const char *name)
     if (arg != NULL && *arg != '\0')
         fprintf(stderr, "        offending text: %s\n", arg);
 
+    // printf
     exit(EXIT_FAILURE);
 }
 /* Convert a numeric command-line argument ('arg') into a long integer,

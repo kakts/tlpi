@@ -8,7 +8,8 @@
 #define _XOPEN_SOURCE 600
 #endif
 
-#include <unistd.h>
+#define _GNU_SOURCE
+#include <crypt.h>
 #include <signal.h>
 #include <string.h>
 #include "../lib/tlpi_hdr.h"
@@ -18,6 +19,8 @@ static char *str2;
 
 // ハンドラ実行回数
 static int handled = 0;
+
+struct crypt_data data;
 
 /**
  * シグナルハンドラ
@@ -40,7 +43,6 @@ int main(int argc, char *argv[])
     if (argc != 3) {
         usageErr("%s str1 str2\n", argv[0]);
     }
-
 
     // argv[2]をstatic変数に代入し、ハンドラから使用可能にする
     str2 = argv[2];
