@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
     itv.it_value.tv_sec = (argc > 1) ? getLong(argv[1], 0, "secs") : 2;
     itv.it_value.tv_usec = (argc > 2) ? getLong(argv[2], 0, "usecs") : 0;
 
+    // インターバル
     itv.it_interval.tv_sec = (argc > 3) ? getLong(argv[3], 0, "int-secs") : 0;
     itv.it_interval.tv_usec = (argc > 4) ? getLong(argv[4], 0, "int-usecs") : 0;
 
@@ -90,6 +91,8 @@ int main(int argc, char *argv[])
     maxSigs = (itv.it_interval.tv_sec == 0 && itv.it_interval.tv_usec == 0) ? 1 : 3;
 
     displayTimes("START:", FALSE);
+
+    // コマンドラインに与えられた値を実タイマ(ITIMER_REAL)の初期値、インターバル値に設定する
     if (setitimer(ITIMER_REAL, &itv, NULL) == -1) {
         errExit("setitimer");
     }
