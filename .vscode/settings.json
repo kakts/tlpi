@@ -5,6 +5,7 @@
         "signal_functions.h": "c",
         "string.h": "c",
         "signal.h": "c",
-        "error_functions.h": "c"
+        "error_functions.h": "c",
+        "time.h": "c"
     }
 }
