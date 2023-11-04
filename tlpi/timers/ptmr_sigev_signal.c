@@ -1,6 +1,12 @@
 /**
  * @file ptmr_sigev_signal.c
  * 23-5 シグナルによるPOSIXタイマ通知
+ * 
+ * コマンド入力例 初期値2 インターバル5 初期値3 インターバル10のタイマーを2つ作成する場合
+ * ./ptmr_sigev_signal 2:5 3:10
+ * 
+ * 実行中にCrrl-Zを押しプロセスを一時停止した後、　fg と入力すると、プロセスが再開し、タイマーの通知が行われます。
+ * timer_getoverrun()の値が0でない場合、タイマーの通知が遅れている回数を示します。
  */
 #define _POSIX_C_SOURCE 199309
 #include <signal.h>
