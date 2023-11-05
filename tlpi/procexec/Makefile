@@ -2,7 +2,7 @@ include ../Makefile.inc
 
 LINUX_EXE = signalfd_sigval
 
-GEN_EXE = t_fork fork_file_sharing footprint t_vfork
+GEN_EXE = t_fork fork_file_sharing footprint t_vfork fork_whos_on_first
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
 all : ${EXE}
