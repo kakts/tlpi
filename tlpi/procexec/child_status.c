@@ -1,29 +1,12 @@
-/*************************************************************************\
-*                  Copyright (C) Michael Kerrisk, 2017.                   *
-*                                                                         *
-* This program is free software. You may use, modify, and redistribute it *
-* under the terms of the GNU General Public License as published by the   *
-* Free Software Foundation, either version 3 or (at your option) any      *
-* later version. This program is distributed without any warranty.  See   *
-* the file COPYING.gpl-v3 for details.                                    *
-\*************************************************************************/
-
-/* Listing 26-3 */
-
-/* child_status.c
-
-   Demonstrate the use of wait() and the W* macros for analyzing the child
-   status returned by wait()
-
-   Usage: child_status [exit-status]
-
-   If "exit-status" is supplied, then the child immediately exits with this
-   status. If no command-line argument is supplied then the child loops waiting
-   for signals that either cause it to stop or to terminate - both conditions
-   can be detected and differentiated by the parent. The parent process
-   repeatedly waits on the child until it detects that the child either exited
-   normally or was killed by a signal.
-*/
+/**
+ * @file child_status.c
+ * 26-3 
+ * 
+ * 子プロセスにシグナルを送信して終了させる
+ * 
+ * SIGABRTによる終了時、RLIMIT_CORE(リソース消費制限)によりコアダンプ処理が無効化されている
+ * コアダンプ処理を有効にするには、 ulimit -c unlimited を実行する
+ */
 #include <sys/wait.h>
 #include "print_wait_status.h"          /* Declares printWaitStatus() */
 #include "tlpi_hdr.h"
