@@ -25,6 +25,5 @@ int system(char *command)
             return -1;
         }
         return status;
-        
     }
 }
