@@ -2,7 +2,7 @@ include ../Makefile.inc
 
 LINUX_EXE =
 
-GEN_EXE = simple_thread
+GEN_EXE = simple_thread simple_thread_detach
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
 all : ${EXE}

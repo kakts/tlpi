@@ -1,6 +1,6 @@
 /**
  * @file simple_thread.c
- * 29-1 Pthreadを用いたスレッドの作成
+ * 29-1.ex Pthreadを用いたスレッドの作成 detach版
  */
 
 #include <pthread.h>
@@ -10,6 +10,14 @@ static void * threadFunc(void *arg)
 {
     char *s = (char *) arg;
     printf("%s", s);
+
+    int res;
+    // 自スレッドをデタッチする
+    res = pthread_detach(pthread_self());
+    if (res != 0) {
+        errExitEN(res, "pthread_detach");
+    }
+    
     return (void *) strlen(s);
 }
 
@@ -28,7 +36,6 @@ int main(int argc, char *argv[])
     if (s != 0) {
         errExitEN(s, "pthread_create");
     }
-    // 作成したスレッドが終了するのを待つ
     sleep(3);
     printf("Message from main()\n");
 
