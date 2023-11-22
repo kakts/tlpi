@@ -1,29 +1,39 @@
 /**
- * @file thread_incr.c
- * 30-1 同期を用いず、同じグローバル変数をインクリメントする2つのスレッドの例
- * 
- * ループ数を大きくすると、最後の演算結果が意図しない値になるのを確認できる
- * ./thread_incr 10000000
+ * @file pthread_incr_mutex.c
+ * 30-2 mutexによるグローバル変数の保護
  */
+
 #include <pthread.h>
 #include "tlpi_hdr.h"
 
-// volatileにより `glob` の算術演算に対する最適化を抑制する
-static volatile int glob = 0;
+static int glob = 0;
+// mutexの初期化
+static pthread_mutex_t mtx = PTHREAD_MUTEX_INITIALIZER;
 
-// globを argに指定された回数インクリメントする
+
 static void * threadFunc(void *arg)
 {
     int loops = *((int *) arg);
-    int loc, j;
+    int loc, j, s;
 
-    // グローバル変数の値をローカルのメモリに保持し、それをインクリメントする
     for (j = 0; j < loops; j++) {
+        // mutexのロック
+        s = pthread_mutex_lock(&mtx);
+        if (s != 0) {
+            errExitEN(s, "pthread_mutex_lock");
+        }
+
+        // globの値をローカル変数にコピーし、それをインクリメントする
         loc = glob;
         loc++;
         glob = loc;
-    }
 
+        // mutexのアンロック
+        s = pthread_mutex_unlock(&mtx);
+        if (s != 0) {
+            errExitEN(s, "pthread_mutex_unlock");
+        }
+    }
     return NULL;
 }
 
@@ -32,7 +42,6 @@ int main(int argc, char *argv[])
     pthread_t t1, t2;
     int loops, s;
 
-    // コマンドライン引数の取得
     loops = (argc > 1) ? getInt(argv[1], GN_GT_0, "num-loops") : 10000000;
 
     // スレッドの作成
