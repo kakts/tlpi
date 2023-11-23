@@ -3,7 +3,8 @@ include ../Makefile.inc
 LINUX_EXE =
 
 GEN_EXE = simple_thread simple_thread_detach \
-			detached_attr too_simple_thread thread_incr pthread_incr_mutex prod_no_condvar prod_condvar
+			detached_attr too_simple_thread thread_incr pthread_incr_mutex prod_no_condvar prod_condvar \
+			thread_multijoin
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
 all : ${EXE}
