@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = t_setsid catch_SIGHUP
+GEN_EXE = t_setsid catch_SIGHUP disc_SIGHUP
 
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
