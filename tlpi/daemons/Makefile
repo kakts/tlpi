@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-GEN_EXE = test_become_daemon
+GEN_EXE = daemon_SIGHUP test_become_daemon 
 
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
