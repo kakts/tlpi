@@ -13,6 +13,7 @@ DIRS = 	lib \
 		threads \
 		daemons \
 		pgsjc \
+		pipes \
 		procpri \
 		procres
 
