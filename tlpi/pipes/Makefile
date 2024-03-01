@@ -2,7 +2,7 @@ include ../Makefile.inc
 
 LINUX_EXE =
 
-GEN_EXE = simple_pipe
+GEN_EXE = simple_pipe pipe_sync
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
 all : ${EXE}
