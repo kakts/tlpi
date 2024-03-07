@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
     }
 
     // 親プロセスは処理を実行後、子プロセスと同期
+    // 全ての子プロセスが書き込みfdをクローズすると、親プロセスのパイプからのread()はEOFを返す
     if (read(pfd[0], &dummy, 1) != 0) {
         fatal("parent didn't get EOF");
     }

@@ -35,3 +35,8 @@ allgen:
 
 clean: 
 	@ for dir in ${BUILD_DIRS}; do (cd $${dir}; ${MAKE} clean) ; done
+
+.PHONY prune:
+prune:
+	docker image prune
+	docker container prune
