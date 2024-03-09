@@ -5,6 +5,7 @@
 
 #define _GNU_SOURCE
 #include <string.h>
+#include <signal.h>
 #include <sys/wait.h>
 #include "print_wait_status.h"
 #include "tlpi_hdr.h"
