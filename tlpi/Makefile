@@ -12,6 +12,7 @@ DIRS = 	lib \
 		procexec \
 		threads \
 		daemons \
+		mmap \
 		pgsjc \
 		pipes \
 		procpri \
