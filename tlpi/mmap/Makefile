@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-LINUX_EXE = mmcat
+LINUX_EXE = mmcat t_mmap
 GEN_EXE = 
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
