@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-LINUX_EXE = us_xfr_sv us_xfr_cl
+LINUX_EXE = us_xfr_sv us_xfr_cl ud_ucase_sv ud_ucase_cl
 GEN_EXE = 
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
