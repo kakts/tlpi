@@ -81,3 +81,14 @@ Response 1: LONG MESSA
 kill %1
 ```
 
+## 59.7 IPv6 データグラムソケットを使ったサーバ/クライアント
+
+- サーバ立ち上げ
+```bash
+$ ./i6d_ucase_sv &
+``` 
+
+- クライアントからローカルホスト上のサーバへ送信
+```bash
+$ ./i6d_ucase_cl ::1 ciao
+```

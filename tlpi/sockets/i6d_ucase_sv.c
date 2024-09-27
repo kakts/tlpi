@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     int sfd, j;
     ssize_t numBytes;
 
-    socklent_t len;
+    socklen_t len;
     char buf[BUF_SIZE];
     char claddrStr[INET6_ADDRSTRLEN];
 

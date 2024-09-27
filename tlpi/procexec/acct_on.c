@@ -8,11 +8,11 @@
 
 int main(int argc, char *argv[])
 {
-    if (argc > 2 || argc > 1 && strcmp(argv[1], "--help") == 0) {
+    if (argc > 2 || (argc > 1 && strcmp(argv[1], "--help") == 0)) {
         usageErr("%s [file]\n", argv[0]);
     }
 
-    if (acct(argv[1] == -1)) {
+    if (acct(argv[1]) == -1) {
         errExit("acct");
     }
 

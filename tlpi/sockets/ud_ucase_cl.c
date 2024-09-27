@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     claddr.sun_family = AF_UNIX;
     snprintf(claddr.sun_path, sizeof(claddr.sun_path), "/tmp/ud_ucase_cl.%ld", (long) getpid());
 
-    if (bind(sfd, (struct sockadder *) &claddr, sizeof(struct sockaddr_un)) == -1) {
+    if (bind(sfd, (struct sockaddr *) &claddr, sizeof(struct sockaddr_un)) == -1) {
         errExit("bind");
     }
 
