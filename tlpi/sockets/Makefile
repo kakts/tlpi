@@ -1,7 +1,7 @@
 include ../Makefile.inc
 
 LINUX_EXE = 
-GEN_EXE = us_xfr_sv us_xfr_cl ud_ucase_sv ud_ucase_cl i6d_ucase_sv i6d_ucase_cl
+GEN_EXE = us_xfr_sv us_xfr_cl ud_ucase_sv ud_ucase_cl i6d_ucase_sv i6d_ucase_cl is_seqnum_cl is_seqnum_sv
 EXE = ${GEN_EXE} ${LINUX_EXE}
 
 

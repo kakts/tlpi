@@ -92,3 +92,22 @@ $ ./i6d_ucase_sv &
 ```bash
 $ ./i6d_ucase_cl ::1 ciao
 ```
+
+## 59.11 ストリームソケットを使ったサーバ/クライアント
+
+- サーバ立ち上げ
+```bash
+$ ./is_seqnum_sv &
+```
+
+- クライアントからサーバへ接続
+
+シーケンス番号を1つ要求する
+```bash
+$ ./is_seqnum_cl localhost
+```
+
+シーケンス番号を10個要求する
+```bash
+$ ./is_seqnum_cl localhost 10
+```
