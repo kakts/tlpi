@@ -17,7 +17,7 @@ CFLAGS = ${IMPL_CFLAGS} ${IMPL_THREAD_FLAGS}
 LDLIBS = ${IMPL_LDLIBS} ${IMPL_THREAD_FLAGS}
 
 # 例: read_line.cをコンパイル対象に追加
-OBJS = read_line.o
+OBJS = read_line.o inet_sockets.o
 
 .PHONY: all clean
 
@@ -32,6 +32,9 @@ i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h
 
 read_line.o: read_line.c read_line.h
 	${CC} ${CFLAGS} -c read_line.c
+
+inet_sockets.o: inet_sockets.c inet_sockets.h
+	${CC} ${CFLAGS} -c inet_sockets.c
 
 is_seqnum_cl.o : is_seqnum.h is_seqnum.h read_line.h
 	${CC} ${CFLAGS} -c is_seqnum_cl.c
