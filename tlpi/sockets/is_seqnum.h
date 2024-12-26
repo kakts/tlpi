@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 #include <signal.h>
 #include "read_line.h"
-#include "../lib/tlpi_hdr.h"
+#include "tlpi_hdr.h"
 
 #define PORT_NUM "50000"    /* Port number for server */
 

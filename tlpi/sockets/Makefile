@@ -1,25 +1,43 @@
+# デフォルトターゲットをallに設定
+.DEFAULT_GOAL := all
+
 include ../Makefile.inc
 
-LINUX_EXE = 
-GEN_EXE = us_xfr_sv us_xfr_cl ud_ucase_sv ud_ucase_cl i6d_ucase_sv i6d_ucase_cl is_seqnum_cl is_seqnum_sv
-EXE = ${GEN_EXE} ${LINUX_EXE}
+GEN_EXE = i6d_ucase_sv i6d_ucase_cl \
+	is_seqnum_sv is_seqnum_cl \
+	ud_ucase_sv ud_ucase_cl \
+	us_xfr_cl us_xfr_sv
 
+LINUX_EXE = list_host_addresses \
+	us_abstract_bind
+
+EXE = ${GEN_EXE} ${LINUX_EXE}
 
 CFLAGS = ${IMPL_CFLAGS} ${IMPL_THREAD_FLAGS}
 LDLIBS = ${IMPL_LDLIBS} ${IMPL_THREAD_FLAGS}
 
+# 例: read_line.cをコンパイル対象に追加
+OBJS = read_line.o
 
-i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h 
+.PHONY: all clean
 
-id_echo_cl.o id_echo_sv.o : id_echo.h 
+is_seqnum_cl: is_seqnum_cl.o read_line.o
+	${CC} -o $@ is_seqnum_cl.o read_line.o ${CFLAGS} ${LDLIBS}
 
-is_seqnum_sv.o is_seqnum_cl.o : is_seqnum.h 
+# is_seqnum_svのビルドルール追加
+is_seqnum_sv: is_seqnum_sv.o read_line.o
+	${CC} -o $@ is_seqnum_sv.o read_line.o ${CFLAGS} ${LDLIBS}
 
-is_seqnum_v2_sv.o is_seqnum_v2_cl.o : is_seqnum_v2.h 
+i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h
 
-scm_cred_recv.o scm_cred_send.o : scm_cred.h
+read_line.o: read_line.c read_line.h
+	${CC} ${CFLAGS} -c read_line.c
 
-scm_rights_recv.o scm_rights_send.o : scm_rights.h
+is_seqnum_cl.o : is_seqnum.h is_seqnum.h read_line.h
+	${CC} ${CFLAGS} -c is_seqnum_cl.c
+
+is_seqnum_sv.o: is_seqnum_sv.c is_seqnum.h read_line.h
+	${CC} ${CFLAGS} -c is_seqnum_sv.c
 
 us_xfr_sv.o us_xfr_cl.o : us_xfr.h 
 
