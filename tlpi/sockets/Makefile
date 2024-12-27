@@ -6,7 +6,8 @@ include ../Makefile.inc
 GEN_EXE = i6d_ucase_sv i6d_ucase_cl \
 	is_seqnum_sv is_seqnum_cl \
 	ud_ucase_sv ud_ucase_cl \
-	us_xfr_cl us_xfr_sv
+	us_xfr_cl us_xfr_sv \
+	id_echo_cl id_echo_sv
 
 LINUX_EXE = list_host_addresses \
 	us_abstract_bind
@@ -29,6 +30,20 @@ is_seqnum_sv: is_seqnum_sv.o read_line.o
 	${CC} -o $@ is_seqnum_sv.o read_line.o ${CFLAGS} ${LDLIBS}
 
 i6d_ucase_sv.o i6d_ucase_cl.o : i6d_ucase.h
+
+# id_echoのビルドルール追加
+id_echo_sv: id_echo_sv.o inet_sockets.o
+	${CC} -o $@ id_echo_sv.o inet_sockets.o ${CFLAGS} ${LDLIBS}
+
+id_echo_cl: id_echo_cl.o inet_sockets.o
+	${CC} -o $@ id_echo_cl.o inet_sockets.o ${CFLAGS} ${LDLIBS}
+
+# オブジェクトファイルの依存関係
+id_echo_sv.o: id_echo_sv.c id_echo.h
+	${CC} ${CFLAGS} -c id_echo_sv.c
+
+id_echo_cl.o: id_echo_cl.c id_echo.h
+	${CC} ${CFLAGS} -c id_echo_cl.c
 
 read_line.o: read_line.c read_line.h
 	${CC} ${CFLAGS} -c read_line.c

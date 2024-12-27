@@ -111,3 +111,17 @@ $ ./is_seqnum_cl localhost
 ```bash
 $ ./is_seqnum_cl localhost 10
 ```
+
+## 60.2 UDP エコーサーバ/クライアント
+
+- サーバ立ち上げ デーモンプロセスとしてバックグラウンドで起動する
+```bash
+$ ./id_echo_sv
+```
+
+- クライアントからサーバへメッセージ送信し、サーバからエコーされたメッセージを受信
+```bash
+$ ./id_echo_cl localhost 'hello world'
+[5 bytes] hello
+[5 bytes] world
+```
