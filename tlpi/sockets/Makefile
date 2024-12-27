@@ -7,7 +7,8 @@ GEN_EXE = i6d_ucase_sv i6d_ucase_cl \
 	is_seqnum_sv is_seqnum_cl \
 	ud_ucase_sv ud_ucase_cl \
 	us_xfr_cl us_xfr_sv \
-	id_echo_cl id_echo_sv
+	id_echo_cl id_echo_sv \
+	is_echo_sv
 
 LINUX_EXE = list_host_addresses \
 	us_abstract_bind
@@ -44,6 +45,12 @@ id_echo_sv.o: id_echo_sv.c id_echo.h
 
 id_echo_cl.o: id_echo_cl.c id_echo.h
 	${CC} ${CFLAGS} -c id_echo_cl.c
+
+is_echo_sv: is_echo_sv.o inet_sockets.o
+	${CC} -o $@ is_echo_sv.o inet_sockets.o ${CFLAGS} ${LDLIBS}
+
+is_echo_sv.o: is_echo_sv.c
+	${CC} ${CFLAGS} -c is_echo_sv.c
 
 read_line.o: read_line.c read_line.h
 	${CC} ${CFLAGS} -c read_line.c
