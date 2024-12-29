@@ -18,7 +18,9 @@ DIRS = 	lib \
 		procpri \
 		procres \
 		svmsg \
-		sockets
+		sockets \
+		altio
+
 
 
 # The "namespaces" directory is deliberately excluded from the above
